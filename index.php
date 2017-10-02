@@ -42,13 +42,11 @@ if(isset($_REQUEST) && isset($_FILES['file'])){
         <link rel="stylesheet" type="text/css" href="css/style.css">
         
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-        <script src="http://maps.google.com/maps/api/js?key=AIzaSyBKp1YJhG-nKM-FGUMcCKnR8oBri_NvWfQ" type="text/javascript"></script>
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyBKp1YJhG-nKM-FGUMcCKnR8oBri_NvWfQ" type="text/javascript"></script>
         <script type='text/javascript' src='js/gmaps.js'></script>
 		<script type='text/javascript' src="js/randomColor.js"></script>
         
         <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/jquery-fileupload.js"></script>
-        
 		<script type="text/javascript">
 
 		jQuery.noConflict();

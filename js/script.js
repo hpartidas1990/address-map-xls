@@ -7,24 +7,38 @@
 
 Utils = {
 		
+		/**
+		 * A default criteria to close the search to an specific location
+		 * 
+		 * @param defaultCriteria
+		 * @default ", Málaga, España"
+		 */
 		defaultCriteria : ", Málaga, España",
-		
 		/*
 		 * @param map
 		 * Used to store map object
 		 */
 		map : null,
-		
+		/**
+		 * @param geocoder
+		 * @default null
+		 */
 		geocoder : null,
-		
+		/**
+		 * @param currSec
+		 * @default ""
+		 */
 		currSec : "",
-		
+		/**
+		 * @param currColor
+		 * @default ""
+		 */
 		currColor : "",
-		
-		currAdd : "",
 		/*
 		 * Initializing map object 
+		 * 
 		 * @method initMap
+		 * @return void
 		 */
 		initMap : function(){
 			console.log("initMap");
@@ -41,6 +55,12 @@ Utils = {
 				_self.geocoder = new google.maps.Geocoder();
 		},
 		
+		/**
+		 * A metod that iterates the json and executes actions for each register
+		 * 
+		 * @method setPinsOnMap
+		 * @return void/boolean
+		 */
 		setPinsOnMap : function(jsonStr){
 			
 			var _self = this;
@@ -63,11 +83,17 @@ Utils = {
 		    }
 		},
 		
+		/**
+		 * A method that sends the requests to the geocoding server, and process the results
+		 * 
+		 * @method codeAddress
+		 * @return void
+		 */
 		codeAddress : function(data){
 			
 			var _self = this;
-				//_self.currSec = data.seccion;
-			//var color = _self.getColor(data.seccion);
+				_self.currSec = data.seccion;
+			var color = _self.getColor(data.seccion);
 			var direccion = data.direccion + _self.defaultCriteria;
 			
 				_self.geocoder.geocode({
@@ -86,9 +112,8 @@ Utils = {
 							  title: direccion,
 							  icon: {
 							        path: google.maps.SymbolPath.CIRCLE,
-							       /* strokeColor: color,
-							        fillColor: color,*/
-							        strokeColor: '#FF0000',
+							        strokeColor: color,
+							        fillColor: color,
 							        scale: 4
 							  },
 							  infoWindow: {
@@ -107,6 +132,12 @@ Utils = {
 			    });
 		},
 		
+		/**
+		 * Method that sorts the received JSON by some specified criteria.
+		 * 
+		 * @method sortBy
+		 * @return ínt 
+		 */
 		sortBy : function(prop){
 		   return function(a,b){
 		      if( a[prop] > b[prop]){
@@ -118,6 +149,12 @@ Utils = {
 		   }
 		},
 		
+		/**
+		 * Returns a new color for the markers
+		 * 
+		 * @method getColor
+		 * @return string
+		 */
 		getColor : function(sec){
 			var _self = this;
 			
@@ -128,6 +165,12 @@ Utils = {
 			return _self.currColor;
 		},
 		
+		/**
+		 * Returns the inner html for the cloud
+		 * 
+		 * @method getCloudInfo
+		 * @return string
+		 */
 		getCloudInfo : function(data){
 			return '<p>' + data.seccion + ' - ' + data.nombre + '<br><b>Dirección</b>: ' + data.direccion + '</p>';
 		}

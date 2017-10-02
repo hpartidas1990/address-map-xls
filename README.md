@@ -1,13 +1,13 @@
-#address-map-xls
+## address-map-xls
 
 A functional web page, where you can upload a list with addresses and they will be shown in a map.
 
-## Technologies Used
+### Technologies Used
 
 I've used [gmaps.js](https://hpneo.github.io/gmaps/) for the map, and the google maps API (geocoder). Feel free to contribute.
 
 
-## License
+### License
 /*
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):

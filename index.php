@@ -1,6 +1,6 @@
 <?php
-error_reporting(-1);
-ini_set('display_errors', 'On');
+error_reporting(0);
+ini_set('display_errors', 'off');
 
 $json_data = null;
 
@@ -42,7 +42,9 @@ if(isset($_REQUEST) && isset($_FILES['file'])){
         <link rel="stylesheet" type="text/css" href="css/style.css">
         
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-        <script src="https://maps.google.com/maps/api/js?key=AIzaSyBKp1YJhG-nKM-FGUMcCKnR8oBri_NvWfQ" type="text/javascript"></script>
+        <!-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyBKp1YJhG-nKM-FGUMcCKnR8oBri_NvWfQ" type="text/javascript"></script> -->
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyBQBnYWIlcrtg53zKeNnsM-tNHUMVg5Qus" type="text/javascript"></script>
+        
         <script type='text/javascript' src='js/gmaps.js'></script>
 		<script type='text/javascript' src="js/randomColor.js"></script>
         
@@ -64,6 +66,10 @@ if(isset($_REQUEST) && isset($_FILES['file'])){
 
 		<div class="master">
 			
+			<div id="map-container">
+				<div id="google-map" class="google-map"></div>
+			</div>
+			
 			<div id="uploader-container">
 				<div class="container-slot">
 					<form action="" id="form-upload" method="post" accept-charset="utf-8" enctype="multipart/form-data">
@@ -74,10 +80,6 @@ if(isset($_REQUEST) && isset($_FILES['file'])){
 				<div>
 					<p>Cargue el archivo <b>.xls</b> para ubicar las direcciones en el mapa</p>			
 				</div>
-			</div>
-		
-			<div id="map-container">
-				<div id="google-map" class="google-map"></div>
 			</div>
 			
 		</div>	

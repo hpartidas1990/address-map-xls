@@ -29,11 +29,29 @@ Utils = {
 		 * @default ""
 		 */
 		currSec : "",
+		
+		setCurrSec : function(sec){
+			this.currSec = sec;
+		},
+		
+		getCurrSec : function(){
+			return this.currSec;
+		},
+		
 		/**
 		 * @param currColor
 		 * @default ""
 		 */
 		currColor : "",
+		
+		setCurrColor : function(color){
+			this.currColor = color;
+		},
+		
+		getCurrColor : function(){
+			return this.currColor;
+		},
+		
 		/*
 		 * Initializing map object 
 		 * 
@@ -46,7 +64,7 @@ Utils = {
 			var _self = this;
 				_self.map = new GMaps({
 			        div: '#google-map',
-			        zoom: 8,
+			        zoom: 9,
 			        lat: 36.7183391,
 			        lng: -4.5193074,
 			        scrollwheel: false
@@ -64,7 +82,6 @@ Utils = {
 		setPinsOnMap : function(jsonStr){
 			
 			var _self = this;
-				_self.delay = true;
 			
 			try {
 				
@@ -73,8 +90,9 @@ Utils = {
 					data.sort(_self.sortBy("seccion"));
 					
 					for(var i = 0; i < data.length; i++){
-					//for(var i = 0; i < 100; i++){
-							_self.codeAddress(data[i]);
+						
+						_self.setCurrSec(data[i].seccion);
+						_self.codeAddress(data[i]);
 					}
 				}
 				
@@ -92,15 +110,14 @@ Utils = {
 		codeAddress : function(data){
 			
 			var _self = this;
-				_self.currSec = data.seccion;
 			var color = _self.getColor(data.seccion);
 			var direccion = data.direccion + _self.defaultCriteria;
+			
+			setTimeout(function() {
 			
 				_self.geocoder.geocode({
 			        'address': direccion
 			    }, function(results, status) {
-			    	
-			    	console.log(status);
 			    	
 			        if (status === google.maps.GeocoderStatus.OK) {
 			        	
@@ -123,13 +140,15 @@ Utils = {
 			            
 			        } else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
 		        		setTimeout(function() {
-			            	_self.codeAddress(direccion);
-			            }, 200);
+			            	_self.codeAddress(data);
+			            }, 900);
 			            
 			        } else {
 			            console.log("Geocode was not successful for the following reason: " + status);
 			        }
 			    });
+				
+			}, 200);
 		},
 		
 		/**
@@ -157,12 +176,17 @@ Utils = {
 		 */
 		getColor : function(sec){
 			var _self = this;
+			var current_section = _self.getCurrSec();
 			
-			if( !_self.currColor || _self.currSec != sec){
-				_self.currColor = randomColor({luminosity: 'dark'});
+			//console.log(current_section + ' - ' + sec);
+			
+			if( current_section != sec){
+				//console.log("creando nuevo color");
+				_self.setCurrColor(randomColor({luminosity: 'dark'}));
+				return _self.getCurrColor();
 			}
 			
-			return _self.currColor;
+			return _self.getCurrColor();
 		},
 		
 		/**

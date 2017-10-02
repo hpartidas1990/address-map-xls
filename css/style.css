@@ -3,37 +3,38 @@ html, body, div {
 	margin: 0;
 }
 
-button {
+body {
+	text-align: center;
+}
+
+button, input[type="file"] {
 	cursor: pointer;
 }
 
 .master {
-	width: 85%;
-	height: 512px;
+	width: 90%;
 	margin: 2% auto;
+	position: relative;
 }
 
 #uploader-container {
-	width: 48%;
-	height: 505px;
+	width: 100%;
+	height: 175px;
 	border: 1px #c0c0c0 solid;
-	display: inline-block;
-	vertical-align: top;
-	
+	display: block;
 	text-align: center;
 }
 
 #uploader-container .container-slot {
-	width: 75%;
-	margin: 12% auto;
+	width: 100%;
+	margin: 2% auto;
 }
 
 #map-container {
-	width: 48%;
+	width: 100%;
 	height: 505px;
 	border: 1px #c0c0c0 solid;
-	display: inline-block;
-	vertical-align: top;
+	display: block;
 }
 
 .google-map {

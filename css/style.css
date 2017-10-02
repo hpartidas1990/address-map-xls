@@ -1,0 +1,42 @@
+html, body, div {
+	padding: 0;
+	margin: 0;
+}
+
+button {
+	cursor: pointer;
+}
+
+.master {
+	width: 85%;
+	height: 512px;
+	margin: 2% auto;
+}
+
+#uploader-container {
+	width: 48%;
+	height: 505px;
+	border: 1px #c0c0c0 solid;
+	display: inline-block;
+	vertical-align: top;
+	
+	text-align: center;
+}
+
+#uploader-container .container-slot {
+	width: 75%;
+	margin: 12% auto;
+}
+
+#map-container {
+	width: 48%;
+	height: 505px;
+	border: 1px #c0c0c0 solid;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.google-map {
+	width: 100%;
+	height: 505px;
+}
